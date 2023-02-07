@@ -1,7 +1,7 @@
-export function load({ params }) {
+import { Test } from '@models'
+// console.log("Test",Test)
+export async function load({ params }) {
     console.log("params",params)
-    return {
-      title: 'Hello world!',
-      content: 'Welcome to our blog. Lorem ipsum dolor sit amet...'
-    }
+    let asd = await Test.get()
+    return asd
 }

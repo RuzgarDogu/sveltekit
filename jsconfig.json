@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@components": ["src/components"],
+			"@models": ["src/models"],
+			"@": ["src"],
+		}
+	},
+	"include": [
+		"src/**/*.js",
+		"src/**/*.svelte"
+	],
+	"exclude": [
+		"tasks/*.js"
+	],
+	"extends": "./.svelte-kit/tsconfig.json"
+}
