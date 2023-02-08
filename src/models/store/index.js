@@ -3,8 +3,8 @@ class MaxStore {
     constructor() {
         this.active = true
     }
-    get = async () => {
-      let store = await DB.get('/products')
+    get = async (count=1) => {
+      let store = await DB.get('/products?limit='+count)
       return store.products || []
     }
 }
