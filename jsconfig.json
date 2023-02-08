@@ -3,6 +3,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@components": ["src/components"],
+			"@config": ["src/config.js"],
+			"@utils": ["src/utils"],
 			"@models": ["src/models"],
 			"@": ["src"],
 		}
