@@ -1,12 +1,21 @@
 import { Store } from '@models'
-let count = 3
+import { invalidate } from '$app/navigation';
+let count = 5
 /** @type {import('./$types').PageServerLoad} */
+
 export async function load({depends}) {
-    depends('test');
-    count++
     let res = await Store.get(count)
+    depends('update');
     return {
         store: res,
-        count: count
+        count: count,
+        loadMore: (e) => {
+            invalidate('update');
+            count+= e
+        },
+        reset: () => {
+            invalidate('update');
+            count = 5
+        }
     };
-};
+}

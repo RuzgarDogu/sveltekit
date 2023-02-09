@@ -1,18 +1,21 @@
 <script>
     import { Card, Button } from 'flowbite-svelte';
     import { InfiniteScroll } from '@components';
-    import { invalidate } from '$app/navigation';
 
     export let data
-    // let products = data.store
     
     const loadMore = () => {
-        invalidate('test');
+        data.loadMore(2)
+    }
+    const reset = () => {
+        data.reset()
     }
 
 </script>
+<div class="fixed-top">
+    <Button on:click={reset}>reset</Button> Total of {data.count} products.
+</div>
 {#each data.store as product}
-
     <Card img="{product.images[0]}" class="mb-4">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{product.title}</h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-tight">
@@ -23,5 +26,12 @@
         </Button>
     </Card>
     {/each}
-    <button on:click={loadMore}>load</button>
-<InfiniteScroll />
+
+<InfiniteScroll on:touchBottom={loadMore}/>
+<style>
+.fixed-top {
+    background-color: aliceblue;
+    width: 100%;
+    position: fixed;
+}
+</style>
